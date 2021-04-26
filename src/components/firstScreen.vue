@@ -6,9 +6,10 @@
     </div>
     <div class='absolute w-full h-full top-0 left-0'>
       <a
-        src='https://twitter.com/Coria_tu'
+        target="_blank"
+        href='https://twitter.com/Coria_tu'
         class='p-1 illustrate-font text-current absolute bottom-1 right-2 opacity-100 rounded-md hover:bg-gray-300 transition-all'>
-        illustrate: Coria_tu
+        illustrator: Coria_tu
       </a>
     </div>
   </div>
@@ -18,7 +19,21 @@
 export default {
   name: 'firstScreen',
   data () {
-    return {}
+    return {
+      // 首页背景图相关数据，后续应放到后端，从后端获取
+      bgArray: [
+        {
+          url: '/bg1.jpg',
+          illustrator: 'Coria_tu',
+          illuUrl: 'https://twitter.com/Coria_tu'
+        },
+        {
+          url: '/bg2.jfif',
+          illustrator: 'harumankai',
+          illuUrl: 'https://twitter.com/harumankai'
+        },
+      ]
+    }
   }
 }
 </script>
