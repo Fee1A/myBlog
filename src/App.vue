@@ -1,6 +1,7 @@
 <template>
   <!-- <app-head></app-head> -->
   <firstScreen></firstScreen>
+  <div class='w-full h-screen bg-gray-600'></div>
 </template>
 
 <script lang="ts">
