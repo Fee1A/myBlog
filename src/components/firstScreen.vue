@@ -1,6 +1,6 @@
 <template>
-  <div class='firstScreen w-full h-screen relative'>
-    <div style='background-image: url("/bg.jpg")'
+  <!-- <div class='firstScreen w-full h-screen relative'>
+    <div style='background-image: url("/bg1.jpg")'
     class='w-full h-full bg-local opacity-50 bg-cover'
     >
     </div>
@@ -12,6 +12,30 @@
         illustrator: Coria_tu
       </a>
     </div>
+  </div> -->
+
+  <div class='firstScreen w-full h-screen relative'>
+    <div class='carousel w-auto h-full absolute left-0 top-0 whitespace-nowrap transition-all'>
+      <div v-for='(item, i) in bgArray' :key='item.url+i'
+      class='w-screen h-full relative inline-block'
+      >
+        <div class='w-full h-full bg-local opacity-50 bg-cover' :style='{backgroundImage:"url("+item.url+")"}'></div>
+        <div class='absolute w-full h-full top-0 left-0'>
+          <a
+            :href="item.illuUrl"
+            target='_blank'
+            class='px-1 py-0 illustrate-font text-current absolute bottom-1 right-8 opacity-100 rounded-md hover:bg-gray-300 transition-all'
+          >
+          illustrator: {{item.illustrator}}
+          </a>
+        </div>
+      </div>
+    </div>
+    <button
+    class='absolute top-10 left-10 w-20 h-10 bg-green-300 rounded hover:bg-green-400 transition-all shadow-lg hover:cursor-pointer'
+    @click='buttonClick'>
+    Push Me
+    </button>
   </div>
 </template>
 
@@ -33,6 +57,18 @@ export default {
           illuUrl: 'https://twitter.com/harumankai'
         },
       ]
+    }
+  },
+  methods: {
+    buttonClick () {
+      let t = this
+      let item = document.querySelector('.carousel')
+      if (item?.classList.value.indexOf('left-vw-100') !== -1) {
+        item?.classList.remove('left-vw-100')
+      } else {
+        item?.classList.add('left-vw-100')
+      }
+      // item?.classList.remove('left-0')
     }
   }
 }
