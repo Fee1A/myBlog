@@ -17,6 +17,10 @@
   .left-vw100 {
     left: 100vw;
   }
+  .transform3D {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
 }
 
 @layer base {
@@ -54,7 +58,7 @@
   a {
     @apply no-underline;
   }
-  /* html {
+  html {
     @apply overflow-x-hidden;
-  } */
+  }
 }

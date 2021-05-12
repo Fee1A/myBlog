@@ -14,8 +14,12 @@
     </div>
   </div> -->
 
-  <div class='firstScreen w-full h-screen relative'>
-    <div class='carousel w-auto h-full absolute left-0 top-0 whitespace-nowrap transition-all'>
+  <div class='firstScreen w-full h-screen relative'
+  @mouseenter="firstScreenMouseEnter"
+  @mousemove="firstScreenMouseMove"
+  @mouseleave="firstScreenMouseLeave">
+    <!-- BG图 -->
+    <section class='carousel w-auto h-full absolute left-0 top-0 whitespace-nowrap transition-all dark:bg-gray-600'>
       <div v-for='(item, i) in bgArray' :key='item.url+i'
       class='w-screen h-full relative inline-block'
       >
@@ -30,7 +34,13 @@
           </a>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- 悬浮窗 -->
+    <!-- <section class='infoWindow w-full h-full absolute top-0 left-0 flex justify-center items-center'>
+      <div class='w-1/3 h-1/4 bg-gray-200 opacity-80'></div>
+    </section> -->
+    <div class='w-1/3 h-1/4 bg-gray-200 opacity-90 absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 transform3D'></div>
+    <!-- 测试用Button -->
     <button
     class='absolute top-10 left-10 w-20 h-10 bg-green-300 rounded hover:bg-green-400 transition-all shadow-lg hover:cursor-pointer'
     @click='buttonClick'>
@@ -69,6 +79,16 @@ export default {
         item?.classList.add('left-vw-100')
       }
       // item?.classList.remove('left-0')
+    },
+    firstScreenMouseEnter (e: object) {
+      console.log('enter')
+    },
+    firstScreenMouseMove (e: object) {
+      // console.log(e)
+      // this.$cm.throttle
+    },
+    firstScreenMouseLeave (e: object) {
+      console.log('leave')
     }
   }
 }
