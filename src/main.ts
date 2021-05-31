@@ -6,6 +6,5 @@ import cm from './base/commonMethods'
 const app = createApp(App)
 app.mount('#app')
 
-
 // 全局属性
 app.config.globalProperties.$cm = cm

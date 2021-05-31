@@ -14,23 +14,30 @@
     </div>
   </div> -->
 
-  <div class='firstScreen w-full h-screen relative'
-  @mouseenter="firstScreenMouseEnter"
-  @mousemove="firstScreenMouseMove"
-  @mouseleave="firstScreenMouseLeave">
+  <div
+    class='firstScreen w-full h-screen relative'
+    @mouseenter='firstScreenMouseEnter'
+    @mousemove='firstScreenMouseMove'
+    @mouseleave='firstScreenMouseLeave'
+  >
     <!-- BG图 -->
     <section class='carousel w-auto h-full absolute left-0 top-0 whitespace-nowrap transition-all dark:bg-gray-600'>
-      <div v-for='(item, i) in bgArray' :key='item.url+i'
-      class='w-screen h-full relative inline-block'
+      <div
+        v-for='(item, i) in bgArray'
+        :key='item.url+i'
+        class='w-screen h-full relative inline-block'
       >
-        <div class='w-full h-full bg-local opacity-50 bg-cover' :style='{backgroundImage:"url("+item.url+")"}'></div>
+        <div
+          class='w-full h-full bg-local opacity-40 bg-cover'
+          :style='{backgroundImage:"url("+item.url+")"}'
+        ></div>
         <div class='absolute w-full h-full top-0 left-0'>
           <a
-            :href="item.illuUrl"
+            :href='item.illuUrl'
             target='_blank'
             class='px-1 py-0 illustrate-font text-current absolute bottom-1 right-8 opacity-100 rounded-md hover:bg-gray-300 transition-all'
           >
-          illustrator: {{item.illustrator}}
+            illustrator: {{ item.illustrator }}
           </a>
         </div>
       </div>
@@ -42,15 +49,18 @@
     <div class='w-1/3 h-1/4 bg-gray-200 opacity-90 absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4 transform3D'></div>
     <!-- 测试用Button -->
     <button
-    class='absolute top-10 left-10 w-20 h-10 bg-green-300 rounded hover:bg-green-400 transition-all shadow-lg hover:cursor-pointer'
-    @click='buttonClick'>
-    Push Me
+      class='absolute top-10 left-10 w-20 h-10 bg-green-300 rounded hover:bg-green-400 transition-all shadow-lg hover:cursor-pointer'
+      @click='buttonClick'
+    >
+      Push Me
     </button>
   </div>
 </template>
 
 <script lang='ts'>
-export default {
+import { defineComponent, PropType, readonly } from 'vue'
+
+export default defineComponent({
   name: 'firstScreen',
   data () {
     return {
@@ -59,20 +69,40 @@ export default {
         {
           url: '/bg1.jpg',
           illustrator: 'Coria_tu',
-          illuUrl: 'https://twitter.com/Coria_tu'
+          illuUrl: 'https://twitter.com/Coria_tu',
         },
         {
           url: '/bg2.jfif',
           illustrator: 'harumankai',
-          illuUrl: 'https://twitter.com/harumankai'
+          illuUrl: 'https://twitter.com/harumankai',
         },
-      ]
+        {
+          url: '/bg3.png',
+          illustrator: '虚蒔times',
+          illuUrl: 'https://www.pixiv.net/artworks/83536444',
+        },
+        {
+          url: '/bg4.jpg',
+          illustrator: 'syoukifune',
+          illuUrl: 'https://twitter.com/syoukifune',
+        },
+        {
+          url: '/bg5.jpg',
+          illustrator: '瓦瓦子ooc',
+          illuUrl: 'https://twitter.com/wwzooc',
+        },
+        {
+          url: '/bg6.png',
+          illustrator: 'せらみっく',
+          illuUrl: 'https://twitter.com/ceramic06',
+        },
+      ],
     }
   },
   methods: {
     buttonClick () {
-      let t = this
-      let item = document.querySelector('.carousel')
+      // let t = this
+      const item = document.querySelector('.carousel')
       if (item?.classList.value.indexOf('left-vw-100') !== -1) {
         item?.classList.remove('left-vw-100')
       } else {
@@ -80,18 +110,18 @@ export default {
       }
       // item?.classList.remove('left-0')
     },
-    firstScreenMouseEnter (e: object) {
+    firstScreenMouseEnter (e: Event) {
       console.log('enter')
     },
-    firstScreenMouseMove (e: object) {
+    firstScreenMouseMove (e: Event) {
       // console.log(e)
       // this.$cm.throttle
     },
-    firstScreenMouseLeave (e: object) {
+    firstScreenMouseLeave (e: Event) {
       console.log('leave')
     }
   }
-}
+})
 </script>
 
 <style>

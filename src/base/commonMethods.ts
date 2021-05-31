@@ -1,9 +1,16 @@
 export default {
   throttle,
-  debounce
+  debounce,
+  getProperty
 }
 
-// 防抖
+/**
+ * classic debounce function
+ *
+ * @param fn - callback function
+ * @param interval - interval between events
+ * @returns -
+ */
 function debounce (fn: () => void, interval: number): () => void {
   let instance = 0
 
@@ -22,20 +29,36 @@ function debounce (fn: () => void, interval: number): () => void {
   }
 }
 
-// 节流
+/**
+ * classic throttle function
+ *
+ * @param fn - callback function
+ * @param interval - interval between events
+ * @returns - function in order to use closure of function
+ */
 function throttle (fn: () => void, interval: number): () => void {
-  let instance = 0,
-  mute = false
+  let mute = false
   function _fn (fn: () => void) {
     mute = true
-    instance = window.setTimeout(() => {
+    window.setTimeout(() => {
       fn()
       mute = false
     }, interval)
   }
   return function () {
     if (!mute) {
-      _fn (fn)
+      _fn(fn)
     }
   }
+}
+
+/**
+ * type safety for key
+ *
+ * @param obj - obj
+ * @param key - key of obj
+ * @returns - obj[key]
+ */
+function getProperty<T, K extends keyof T> (obj: T, key: K): T[K] {
+  return obj[key]
 }
